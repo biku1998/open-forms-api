@@ -10,8 +10,8 @@ node_modules
 /.nyc_output
 
 # production
-/build
-/dist
+*/build
+*/dist
 
 # misc
 .DS_Store
