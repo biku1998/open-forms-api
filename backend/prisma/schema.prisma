@@ -15,4 +15,45 @@ model User {
   email String @unique
   fullName String
   password String
+  forms Form[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Form {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  isPublished Boolean @default(false)
+  deletedAt DateTime?
+  isActive Boolean @default(true)
+  owner User @relation(fields: [ownerId], references:[id])
+  ownerId Int
+  inputs Input[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Input {
+  id Int @id @default(autoincrement())
+  question String
+  type String
+  required Boolean @default(false)
+  points Int @default(0)
+  form Form @relation(fields: [formId], references:[id])
+  formId Int
+  options Option[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Option {
+  id Int @id @default(autoincrement())
+  content String
+  isCorrect Boolean @default(false)
+  input Input @relation(fields: [inputId],references:[id])
+  inputId Int 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
