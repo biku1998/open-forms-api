@@ -3,13 +3,13 @@ import { IsOptional, IsString } from 'class-validator';
 export class UpdateFormDto {
   @IsString()
   @IsOptional()
-  title: string;
+  readonly title: string;
 
   @IsString()
   @IsOptional()
-  description: string;
+  readonly description: string;
 
   @IsString()
   @IsOptional()
-  publishedAt: Date;
+  readonly publishedAt: Date;
 }

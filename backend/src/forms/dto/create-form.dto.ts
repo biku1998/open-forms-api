@@ -3,17 +3,17 @@ import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 export class CreateFormDto {
   @IsString()
   @IsNotEmpty()
-  title: string;
+  readonly title: string;
 
   @IsString()
   @IsNotEmpty()
-  description: string;
+  readonly description: string;
 
   @IsNumber()
-  @IsOptional()
+  @IsOptional() // will be added by the server
   ownerId: number;
 
   @IsString()
   @IsOptional()
-  publishedAt: Date;
+  readonly publishedAt: Date;
 }

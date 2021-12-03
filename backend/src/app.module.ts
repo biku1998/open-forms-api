@@ -7,9 +7,22 @@ import { PrismaModule } from './prisma/prisma.module';
 import { FormsModule } from './forms/forms.module';
 import { InputsModule } from './inputs/inputs.module';
 import { OptionsModule } from './options/options.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UsersModule, AuthModule, PrismaModule, FormsModule, PrismaModule, InputsModule, OptionsModule],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+    UsersModule,
+    AuthModule,
+    PrismaModule,
+    FormsModule,
+    PrismaModule,
+    InputsModule,
+    OptionsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -13,8 +13,8 @@ export class FormsService {
     return form;
   }
 
-  async findAll(): Promise<Form[]> {
-    const forms = await this.prisma.form.findMany();
+  async findAll(ownerId: number): Promise<Form[]> {
+    const forms = await this.prisma.form.findMany({ where: { ownerId } });
     return forms;
   }
 
