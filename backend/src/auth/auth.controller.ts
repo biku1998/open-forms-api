@@ -5,10 +5,12 @@ import {
   Post,
   UnauthorizedException,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './login-user.dto';
 
+@ApiTags('authentication')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

@@ -14,7 +14,9 @@ import { FormsService } from './forms.service';
 import { CreateFormDto } from './dto/create-form.dto';
 import { UpdateFormDto } from './dto/update-form.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('forms')
 @Controller('forms')
 export class FormsController {
   constructor(private readonly formsService: FormsService) {}
