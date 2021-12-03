@@ -8,6 +8,7 @@ import {
   Delete,
   UseGuards,
   Req,
+  NotFoundException,
 } from '@nestjs/common';
 import { FormsService } from './forms.service';
 import { CreateFormDto } from './dto/create-form.dto';
@@ -36,19 +37,29 @@ export class FormsController {
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.formsService.findOne(+id);
+  async findOne(@Param('id') id: string, @Req() req) {
+    const form = await this.formsService.findOne(+id, req.user.id);
+    if (!form) throw new NotFoundException();
+    return { form };
   }
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateFormDto) {
-    return this.formsService.update(+id, dto);
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateFormDto,
+    @Req() req,
+  ) {
+    const form = await this.formsService.update(+id, dto, req.user.id);
+    if (!form) throw new NotFoundException();
+    return { form };
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.formsService.remove(+id);
+  async remove(@Param('id') id: string, @Req() req) {
+    const form = await this.formsService.remove(+id, req.user.id);
+    if (!form) throw new NotFoundException();
+    return { form };
   }
 }

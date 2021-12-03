@@ -5,6 +5,9 @@ export class UpdateFormDto {
   @IsOptional()
   readonly title: string;
 
+  @IsOptional({ always: true })
+  id: number;
+
   @IsString()
   @IsOptional()
   readonly description: string;
