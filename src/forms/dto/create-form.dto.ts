@@ -15,5 +15,5 @@ export class CreateFormDto {
 
   @IsString()
   @IsOptional()
-  readonly publishedAt: Date;
+  readonly publishedAt?: Date;
 }

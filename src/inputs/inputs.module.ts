@@ -4,6 +4,6 @@ import { InputsController } from './inputs.controller';
 
 @Module({
   controllers: [InputsController],
-  providers: [InputsService]
+  providers: [InputsService],
 })
 export class InputsModule {}

@@ -3,13 +3,13 @@ import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 export class UpdateInputDto {
   @IsOptional()
   @IsString()
-  question: string;
+  question?: string;
 
   @IsOptional()
   @IsBoolean()
-  required: boolean;
+  required?: boolean;
 
   @IsOptional()
   @IsNumber()
-  points: number;
+  points?: number;
 }

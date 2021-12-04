@@ -25,5 +25,5 @@ export class CreateInputDto {
 
   @IsOptional()
   @IsNumber()
-  points: number;
+  points?: number;
 }

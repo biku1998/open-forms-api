@@ -58,6 +58,14 @@ export class FormsController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Patch(':id/publish')
+  async publish(@Param('id') id: string, @Req() req) {
+    const form = await this.formsService.publish(+id, req.user.id);
+    if (!form) throw new NotFoundException();
+    return { form };
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string, @Req() req) {
     const form = await this.formsService.remove(+id, req.user.id);

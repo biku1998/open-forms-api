@@ -71,6 +71,27 @@ export class FormsService {
     }
   }
 
+  async publish(id: number, ownerId: number) {
+    try {
+      const form = await this.prisma.form.update({
+        where: {
+          id_ownerId: { id, ownerId },
+        },
+        data: { publishedAt: new Date().toISOString() },
+      });
+
+      return form;
+    } catch (error) {
+      if (error instanceof PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          // form does not exists
+          return null;
+        }
+      }
+      throw new InternalServerErrorException(error);
+    }
+  }
+
   async remove(id: number, ownerId: number): Promise<Form> {
     try {
       const form = await this.prisma.form.delete({

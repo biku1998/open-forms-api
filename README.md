@@ -35,7 +35,6 @@ publishedAt: Date
 id: Number
 question: String
 type: String enum(mcq, checkbox, dropdown)
-ownerId: Number (ref 'User')
 formId: Number (ref 'Form')
 ```
 

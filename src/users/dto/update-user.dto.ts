@@ -5,9 +5,9 @@ import { IsOptional, IsString } from 'class-validator';
 export class UpdateUserDto {
   @IsOptional()
   @IsString()
-  readonly fullName: string;
+  readonly fullName?: string;
 
   @IsOptional()
   @IsString()
-  readonly password: string;
+  readonly password?: string;
 }
