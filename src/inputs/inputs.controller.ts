@@ -10,8 +10,9 @@ import {
 import { InputsService } from './inputs.service';
 import { CreateInputDto } from './dto/create-input.dto';
 import { UpdateInputDto } from './dto/update-input.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @ApiTags('inputs')
 @Controller('inputs')
 export class InputsController {

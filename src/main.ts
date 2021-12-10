@@ -19,6 +19,7 @@ async function bootstrap() {
     .setTitle('open-form API')
     .setDescription('Backend Rest API for open-forms client app')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
